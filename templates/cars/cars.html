@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cars</title>
+</head>
+<body>
+    <h1>Your Cars</h1>
+    <form method="GET" action="{{ url_for('search') }}">
+        <input type="text" name="keyword" placeholder="Search cars...">
+        <button type="submit">Search</button>
+    </form>
+    <a href="{{ url_for('create_car') }}">Add New Car</a>
+    <ul>
+        {% for car in cars %}
+        <li>
+            <a href="{{ url_for('car_detail', car_id=car.id) }}">{{ car.title }}</a>
+            <form method="POST" action="{{ url_for('delete_car', car_id=car.id) }}">
+                <button type="submit">Delete</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

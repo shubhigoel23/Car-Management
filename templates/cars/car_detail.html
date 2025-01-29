@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ car.title }}</title>
+</head>
+<body>
+    <h1>{{ car.title }}</h1>
+    <p>{{ car.description }}</p>
+    <p>Tags: {{ car.tags }}</p>
+    <img src="{{ url_for('static', filename='uploads/' + car.images) }}" alt="{{ car.title }}">
+    <a href="{{ url_for('update_car', car_id=car.id) }}">Edit</a>
+    <form method="POST" action="{{ url_for('delete_car', car_id=car.id) }}">
+        <button type="submit">Delete</button>
+    </form>
+</body>
+</html>
